@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# ロールPW　保存の回避
+application.properties
