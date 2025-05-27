@@ -38,13 +38,15 @@ public class CalendarsController {
   // 予定の保存
   @PostMapping("/calendars")
   public String create(@ModelAttribute("planForm") @Validated PlanForm planForm, BindingResult result) {
+    // バリデーション結果のresultにたいしてhasError()（エラーがあったときにtrueを返す）　の否定 !
+    // エラーがなかった場合はtrueを返すifの中を実行
     if (!result.hasErrors()) {
       PlanEntity newPlan = new PlanEntity();
       newPlan.setDate(planForm.getDate());
       newPlan.setPlan(planForm.getPlan());
       planRepository.insert(newPlan);
     }
-    return "redirect:/calendars";
+    return "redirect:/";
   }
 
   private List<Map<String, Object>> get_week() {
