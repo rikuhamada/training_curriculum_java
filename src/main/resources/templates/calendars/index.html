@@ -27,6 +27,7 @@
             <span th:text="${day.month}"></span>
             <span th:text="'/'"></span>
             <span th:text="${day.date}"></span>
+            <span th:text="${day.dow}"></span>
           </div>
           <ul class="content">
             <li th:each="plan : ${day.plans}" class="plan-list">

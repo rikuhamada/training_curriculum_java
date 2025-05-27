@@ -1,6 +1,7 @@
 package in.tech_camp.training_curriculum_java.controller;
 
 import java.time.LocalDate;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,10 @@ import in.tech_camp.training_curriculum_java.form.PlanForm;
 import in.tech_camp.training_curriculum_java.entity.PlanEntity;
 
 import lombok.AllArgsConstructor;
+
+import java.util.Arrays;
+import java.util.Date;
+
 
 @Controller
 @AllArgsConstructor
@@ -60,6 +65,7 @@ public class CalendarsController {
     for (int x = 0; x < 7; x++) {
       Map<String, Object> day_map = new HashMap<String, Object>();
       LocalDate currentDate = todaysDate.plusDays(x);
+      DayOfWeek dow = currentDate.getDayOfWeek();
 
       List<String> todayPlans = new ArrayList<>();
       for (PlanEntity plan : plans) {
@@ -71,6 +77,7 @@ public class CalendarsController {
       day_map.put("month", currentDate.getMonthValue());
       day_map.put("date", currentDate.getDayOfMonth());
       day_map.put("plans", todayPlans);
+      day_map.put("dow", wdays[dow.getValue() %7]);
 
       weekDays.add(day_map);
     }
