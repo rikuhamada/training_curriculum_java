@@ -16,7 +16,8 @@ public interface PlanRepository {
     @Select("SELECT * FROM plans WHERE date BETWEEN #{startDate} AND #{endDate}")
     List<PlanEntity> findByDateBetween(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
-   @Insert("insert into plans (plan, date) values (#{plan}, #{date})")
-   @Options(useGeneratedKeys = true, keyProperty = "id")
-   void insert(PlanEntity planEntity);
+    // 入力されたデータをテーブルに挿入
+    @Insert("insert into plans (plan, date) values (#{plan}, #{date})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    void insert(PlanEntity planEntity);
 }
